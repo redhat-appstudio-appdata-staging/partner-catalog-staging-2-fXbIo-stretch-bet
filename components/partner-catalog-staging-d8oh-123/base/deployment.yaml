@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: partner-catalog-staging-d8oh-123
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: partner-catalog-staging-d8oh-123
+    app.kubernetes.io/part-of: partner-catalog-staging-2
+  name: partner-catalog-staging-d8oh-123
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: java-springboot-app
+      app.kubernetes.io/instance: partner-catalog-staging-d8oh-123
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: java-springboot-app
+        app.kubernetes.io/instance: partner-catalog-staging-d8oh-123
+    spec:
+      containers:
+      - image: quay.io/redhat-user-workloads-stage/beaumorley-tenant/partner-catalog-staging-2/partner-catalog-staging-d8oh-123@sha256:21c10eef47e546805271515c49bf0f578a580b726982788de6d9bfa0f5b7f7d2
+        name: my-java-springboot
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 180Mi
+status: {}
